@@ -1,0 +1,506 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shopping Mania — Premium shopping destination for electronics, fashion, beauty and more. Shop top brands at unbeatable prices.">
+  <title>Shopping Mania — Premium Shopping Experience</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  🚀 Free Shipping on orders over Rs. 5,000 &nbsp;|&nbsp; Use code <strong>LUXE20</strong> for 20% off &nbsp;|&nbsp;
+  <a href="products.html">Shop Now →</a>
+</div>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <span>📍 Delivering across Sri Lanka</span>
+  <div class="top-bar-links">
+    <a href="products.html">Track Order</a>
+    <div class="top-bar-divider"></div>
+    <a href="contact.html">Help</a>
+    <div class="top-bar-divider"></div>
+    <a href="login.html">Login</a>
+    <div class="top-bar-divider"></div>
+    <a href="register.html">Register</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">Shopping Mania</span>
+  </a>
+
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search products, brands, categories…">
+    <button class="search-btn" onclick="document.getElementById('searchInput').dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}))">Search</button>
+  </div>
+
+  <div class="header-actions">
+    <a href="login.html" class="icon-btn" title="Account">👤</a>
+    <a href="products.html" class="icon-btn" title="Wishlist">♡</a>
+    <a href="cart.html" class="icon-btn" title="Cart">
+      🛒
+      <span class="cart-badge" id="cartCount">0</span>
+    </a>
+  </div>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="index.html" class="active">Home</a>
+  <a href="products.html">All Products</a>
+  <a href="products.html?cat=electronics">Electronics</a>
+  <a href="products.html?cat=fashion">Fashion</a>
+  <a href="products.html?cat=beauty">Beauty</a>
+  <a href="products.html?cat=shoes">Shoes</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- Hero Carousel -->
+<section class="hero-carousel" style="position:relative; width:100%; max-width:1200px; margin:20px auto; overflow:hidden; border-radius:12px;">
+  <div class="carousel-track" id="carouselTrack" style="display:flex; transition:transform 0.5s ease;">
+    <img src="images/hero-banner-1.jpg" style="width:100%; flex-shrink:0; object-fit:cover;" alt="Beauty Sale">
+    <img src="images/hero-banner-2.jpg" style="width:100%; flex-shrink:0; object-fit:cover;" alt="Electronics Sale">
+    <img src="images/hero-banner-3.jpg" style="width:100%; flex-shrink:0; object-fit:cover;" alt="Fashion Sale">
+  </div>
+  <button onclick="moveCarousel(-1)" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer;">❮</button>
+  <button onclick="moveCarousel(1)" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); background:rgba(0,0,0,0.5); color:white; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer;">❯</button>
+  <div class="carousel-dots" id="carouselDots" style="position:absolute; bottom:15px; left:50%; transform:translateX(-50%); display:flex; gap:8px;">
+    <span class="dot active" style="width:10px; height:10px; border-radius:50%; background:white; cursor:pointer;"></span>
+    <span class="dot" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer;"></span>
+    <span class="dot" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer;"></span>
+  </div>
+</section>
+<script>
+  let slideIndex = 0;
+  function moveCarousel(dir) {
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.dot');
+    slideIndex = (slideIndex + dir + 3) % 3;
+    track.style.transform = `translateX(-${slideIndex * 100}%)`;
+    dots.forEach((dot, idx) => {
+      dot.style.background = idx === slideIndex ? 'white' : 'rgba(255,255,255,0.5)';
+    });
+  }
+  setInterval(() => moveCarousel(1), 5000);
+</script>
+
+<!-- Vouchers & Coins Section -->
+<section class="vouchers-section" style="max-width:1200px; margin:0 auto 30px; padding:0 var(--padding-x); display:flex; gap:15px; overflow-x:auto; scrollbar-width:none;">
+  <div style="min-width:200px; background:linear-gradient(135deg, #FF6B6B, #FF8E53); border-radius:10px; padding:15px; color:white; display:flex; align-items:center; gap:12px;">
+    <div style="font-size:30px;">🎟️</div>
+    <div>
+      <div style="font-weight:700; font-size:16px;">Rs. 500 Off</div>
+      <div style="font-size:12px; opacity:0.9;">Min. spend Rs. 2000</div>
+    </div>
+  </div>
+  <div style="min-width:200px; background:linear-gradient(135deg, #6C63FF, #8B85FF); border-radius:10px; padding:15px; color:white; display:flex; align-items:center; gap:12px;">
+    <div style="font-size:30px;">💰</div>
+    <div>
+      <div style="font-weight:700; font-size:16px;">Daily Coins</div>
+      <div style="font-size:12px; opacity:0.9;">Check-in to earn</div>
+    </div>
+  </div>
+  <div style="min-width:200px; background:linear-gradient(135deg, #00D68F, #00A86B); border-radius:10px; padding:15px; color:white; display:flex; align-items:center; gap:12px;">
+    <div style="font-size:30px;">🚚</div>
+    <div>
+      <div style="font-weight:700; font-size:16px;">Free Shipping</div>
+      <div style="font-size:12px; opacity:0.9;">Across Sri Lanka</div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Shop by <span class="section-title-accent">Category</span></h2>
+    <a href="products.html" class="section-link">All Categories →</a>
+  </div>
+  <div class="categories-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:15px; text-align:center;">
+    <a href="products.html?cat=electronics" class="category-card" style="padding:0; overflow:hidden;">
+      <img src="images/cat-electronics.jpg" alt="Electronics" style="width:100%; aspect-ratio:1; object-fit:cover;">
+      <div class="category-name" style="padding:10px;">Electronics</div>
+    </a>
+    <a href="products.html?cat=fashion" class="category-card" style="padding:0; overflow:hidden;">
+      <img src="images/cat-fashion.jpg" alt="Fashion" style="width:100%; aspect-ratio:1; object-fit:cover;">
+      <div class="category-name" style="padding:10px;">Fashion</div>
+    </a>
+    <a href="products.html?cat=beauty" class="category-card" style="padding:0; overflow:hidden;">
+      <img src="images/cat-beauty.jpg" alt="Beauty" style="width:100%; aspect-ratio:1; object-fit:cover;">
+      <div class="category-name" style="padding:10px;">Beauty</div>
+    </a>
+    <a href="products.html?cat=shoes" class="category-card" style="padding:0; overflow:hidden;">
+      <div style="width:100%; aspect-ratio:1; background:var(--surface-3); display:flex; align-items:center; justify-content:center; font-size:40px;">👟</div>
+      <div class="category-name" style="padding:10px;">Shoes</div>
+    </a>
+    <a href="products.html?cat=home" class="category-card" style="padding:0; overflow:hidden;">
+      <div style="width:100%; aspect-ratio:1; background:var(--surface-3); display:flex; align-items:center; justify-content:center; font-size:40px;">🏠</div>
+      <div class="category-name" style="padding:10px;">Home</div>
+    </a>
+  </div>
+</section>
+
+<!-- Flash Sale -->
+<section id="flash-sale" class="section flash-section">
+  <div class="flash-header">
+    <div class="flash-title">
+      <span class="flash-fire">🔥</span>
+      Flash Sale
+    </div>
+    <div class="countdown">
+      <span class="countdown-label">Ends in</span>
+      <div class="countdown-block">
+        <span class="countdown-num" id="cdHours">00</span>
+        <span class="countdown-unit">hrs</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-block">
+        <span class="countdown-num" id="cdMins">00</span>
+        <span class="countdown-unit">min</span>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-block">
+        <span class="countdown-num" id="cdSecs">00</span>
+        <span class="countdown-unit">sec</span>
+      </div>
+    </div>
+    <a href="products.html" class="section-link">View All →</a>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card" data-name="Velvet Matte Lipstick" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/velvet-matte-lipstick.jpg" alt="Velvet Matte Lipstick"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=💄'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(1);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-discount">−30%</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Velvet Matte Lipstick</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(128)</span>
+        </div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 1,000</span>
+          <span class="price-old">Rs. 2,500</span>
+        </div>
+        <div class="flash-progress" style="margin-top:8px; background:var(--surface-3); border-radius:10px; height:8px; width:100%; position:relative; overflow:hidden;">
+          <div style="background:var(--accent); width:85%; height:100%; border-radius:10px;"></div>
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px; text-align:right;">85% Sold</div>
+        <button class="add-to-cart-btn" onclick="addToCart(1)" style="margin-top:8px;">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card" data-name="Glow Blusher Palette" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/glow-blusher-palette.jpg" alt="Glow Blusher Palette"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=🌸'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(2);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-discount">−15%</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Glow Blusher Palette</div>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-count">(86)</span>
+        </div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 500</span>
+          <span class="price-old">Rs. 800</span>
+        </div>
+        <div class="flash-progress" style="margin-top:8px; background:var(--surface-3); border-radius:10px; height:8px; width:100%; position:relative; overflow:hidden;">
+          <div style="background:var(--accent); width:40%; height:100%; border-radius:10px;"></div>
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px; text-align:right;">40% Sold</div>
+        <button class="add-to-cart-btn" onclick="addToCart(2)" style="margin-top:8px;">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card" data-name="Foundation" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/foundation.jpg" alt="Foundation"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=🧴'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(3);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-discount">−30%</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Foundation</div>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">(312)</span>
+        </div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 8,900</span>
+          <span class="price-old">Rs. 12,500</span>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(3)">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card" data-name="Brush" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/brush.jpg" alt="Brush"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=🖌️'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(4);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-discount">−25%</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Brush</div>
+        <div class="product-rating">
+          <span class="stars">★★★★☆</span>
+          <span class="rating-count">(74)</span>
+        </div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 7,500</span>
+          <span class="price-old">Rs. 10,000</span>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(4)">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Just For You -->
+<section id="products" class="section">
+  <div class="section-header">
+    <h2 class="section-title">Just <span class="section-title-accent">For You</span></h2>
+    <a href="products.html" class="section-link">See All →</a>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card" data-name="Laptop Ultra Slim" data-category="Electronics">
+      <div class="product-image-wrapper">
+        <img src="images/laptop-ultra-slim.jpg" alt="Laptop Ultra Slim"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=💻'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(5);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-new">NEW</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Electronics</div>
+        <div class="product-name">Laptop Ultra Slim</div>
+        <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(201)</span></div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 1,50,000</span>
+          <span class="price-old">Rs. 1,85,000</span>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(5)">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="Sponge" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/sponge.jpg" alt="Sponge"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=🧽'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(6);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-discount">−25%</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Sponge</div>
+        <div class="product-rating"><span class="stars">★★★★☆</span><span class="rating-count">(55)</span></div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 4,500</span>
+          <span class="price-old">Rs. 6,000</span>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(6)">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="Hand Cream" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/hand-cream.jpg" alt="Hand Cream"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=🤲'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(7);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-new">NEW</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Hand Cream</div>
+        <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(440)</span></div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 5,500</span>
+          <span class="price-old">Rs. 7,000</span>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(7)">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="product-card" data-name="Eyelash Curler" data-category="Beauty">
+      <div class="product-image-wrapper">
+        <img src="images/eyelash-curler.jpg" alt="Eyelash Curler"
+             onerror="this.src='https://placehold.co/230x210/1C1C26/6C63FF?text=👁️'" loading="lazy">
+        <div class="product-overlay">
+          <button class="quick-add-btn" onclick="addToCart(9);event.stopPropagation();">⚡ Quick Add</button>
+        </div>
+        <div class="img-details" style="position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,0.65); backdrop-filter:blur(4px); color:#fff; padding:4px 8px; font-size:11px; display:flex; justify-content:space-between; z-index:2;"><span>✓ Shopping Mania Mall</span><span>🚚 Free Delivery</span></div>
+        <span class="badge badge-new">NEW</span>
+        <button class="wishlist-btn" onclick="event.stopPropagation()">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-category-tag">Beauty</div>
+        <div class="product-name">Eyelash Curler</div>
+        <div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(167)</span></div>
+        <div class="product-pricing">
+          <span class="price-current">Rs. 2,200</span>
+          <span class="price-old">Rs. 3,200</span>
+        </div>
+        <button class="add-to-cart-btn" onclick="addToCart(9)">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="newsletter-wrapper">
+    <div class="newsletter-badge">✉️ Newsletter</div>
+    <h2>Get Exclusive <span style="background:linear-gradient(135deg,var(--brand-light),var(--success));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Deals</span></h2>
+    <p>Join 50,000+ smart shoppers. Get early access to sales, new arrivals, and exclusive offers.</p>
+    <div class="newsletter-form">
+      <input type="email" id="newsletterEmail" placeholder="Enter your email address">
+      <button onclick="subscribeNewsletter()">Subscribe →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="margin-bottom:14px;display:inline-flex;">
+        <div class="logo-icon">✦</div>
+        <span class="logo-text">Shopping Mania</span>
+      </a>
+      <p>Your premium shopping destination.<br>Curated collections. Unbeatable prices.<br>Delivered with care across Sri Lanka.</p>
+      <div class="footer-social">
+        <button class="social-btn" title="Instagram">📸</button>
+        <button class="social-btn" title="Facebook">👥</button>
+        <button class="social-btn" title="Twitter">🐦</button>
+        <button class="social-btn" title="YouTube">▶️</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="products.html">All Products</a>
+      <a href="products.html?cat=electronics">Electronics</a>
+      <a href="products.html?cat=fashion">Fashion</a>
+      <a href="products.html?cat=beauty">Beauty</a>
+      <a href="products.html?cat=shoes">Shoes</a>
+    </div>
+    <div class="footer-col">
+      <h4>Account</h4>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="cart.html">My Cart</a>
+      <a href="orders.html">My Orders</a>
+      <a href="contact.html">Help Center</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Return Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Shopping Mania. All rights reserved.</p>
+    <div class="footer-payments">
+      <span class="payment-badge">VISA</span>
+      <span class="payment-badge">MC</span>
+      <span class="payment-badge">JCB</span>
+      <span class="payment-badge">COD</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" title="Back to Top">↑</button>
+
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- App Bottom Navigation (App Style) -->
+<nav class="bottom-nav">
+  <a href="index.html" class="nav-item active">
+    <div class="nav-icon">🏠</div>
+    <span>Home</span>
+  </a>
+  <a href="products.html" class="nav-item">
+    <div class="nav-icon">🛍️</div>
+    <span>Categories</span>
+  </a>
+  <a href="cart.html" class="nav-item">
+    <div class="nav-icon" style="position:relative;">
+      🛒<span class="cart-badge" style="position:absolute; top:-5px; right:-10px; font-size:10px; padding:2px 5px; background:var(--accent); color:white; border-radius:50%;">0</span>
+    </div>
+    <span>Cart</span>
+  </a>
+  <a href="login.html" class="nav-item">
+    <div class="nav-icon">👤</div>
+    <span>Account</span>
+  </a>
+</nav>
+
+<script src="scripts.js"></script>
+<script>
+  function subscribeNewsletter() {
+    const email = document.getElementById("newsletterEmail").value;
+    if (!email || !email.includes("@")) { showToast("Invalid Email", "Please enter a valid email.", "error"); return; }
+    showToast("🎉 Subscribed!", "Welcome! Check your inbox for a special offer.", "success");
+    document.getElementById("newsletterEmail").value = "";
+  }
+</script>
+</body>
+</html>
+
+
+
+

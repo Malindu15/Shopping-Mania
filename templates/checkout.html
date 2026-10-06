@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure checkout at Shopping Mania. Complete your purchase safely and quickly.">
+  <title>Checkout — Shopping Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">Shopping Mania</span>
+  </a>
+  <div class="header-actions" style="margin-left:auto;">
+    <a href="cart.html" class="icon-btn" title="Cart">
+      🛒 <span class="cart-badge" id="cartCount">0</span>
+    </a>
+  </div>
+</header>
+
+<!-- Progress Steps -->
+<div class="checkout-progress">
+  <div class="progress-step done">
+    <div class="step-num">✓</div>
+    <span class="step-name">Cart</span>
+  </div>
+  <div class="progress-line"></div>
+  <div class="progress-step active">
+    <div class="step-num">2</div>
+    <span class="step-name">Details</span>
+  </div>
+  <div class="progress-line"></div>
+  <div class="progress-step">
+    <div class="step-num">3</div>
+    <span class="step-name">Payment</span>
+  </div>
+  <div class="progress-line"></div>
+  <div class="progress-step">
+    <div class="step-num">4</div>
+    <span class="step-name">Confirm</span>
+  </div>
+</div>
+
+<!-- Order Success (hidden, shown after order) -->
+<div class="order-success" id="orderSuccess">
+  <div class="success-icon">🎉</div>
+  <h2>Order Placed!</h2>
+  <p>Thank you for your purchase. Your order is confirmed and will be delivered within 3–5 business days.</p>
+  <a href="index.html" class="btn-primary">Continue Shopping →</a>
+</div>
+
+<!-- Checkout Layout -->
+<div id="checkoutForm">
+  <div class="checkout-layout">
+
+    <!-- Left: Form -->
+    <div>
+      <form onsubmit="placeOrder(event)">
+
+        <!-- Delivery Info -->
+        <div class="form-section">
+          <h3>📦 Delivery Information</h3>
+          <div class="form-grid">
+            <div class="float-group">
+              <input type="text" id="custFirstName" placeholder=" " required>
+              <label for="custFirstName">First Name</label>
+            </div>
+            <div class="float-group">
+              <input type="text" id="custLastName" placeholder=" " required>
+              <label for="custLastName">Last Name</label>
+            </div>
+          </div>
+          <div class="form-grid" style="margin-top:14px;">
+            <div class="float-group">
+              <input type="email" id="custEmail" placeholder=" " required>
+              <label for="custEmail">Email Address</label>
+            </div>
+            <div class="float-group">
+              <input type="tel" id="custPhone" placeholder=" " required>
+              <label for="custPhone">Phone Number</label>
+            </div>
+          </div>
+          <div style="margin-top:14px;">
+            <div class="float-group">
+              <textarea id="custAddress" placeholder=" " required></textarea>
+              <label for="custAddress">Delivery Address</label>
+            </div>
+          </div>
+          <div class="form-grid" style="margin-top:14px;">
+            <div class="float-group">
+              <input type="text" id="custCity" placeholder=" " required>
+              <label for="custCity">City</label>
+            </div>
+            <div class="float-group">
+              <input type="text" id="custPostal" placeholder=" ">
+              <label for="custPostal">Postal Code</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="form-section">
+          <h3>💳 Payment Method</h3>
+          <div class="payment-methods">
+            <div class="payment-method" id="pay-cod" onclick="selectPayment('cod')">
+              <div class="payment-icon">💵</div>
+              <div class="payment-name">Cash on Delivery</div>
+            </div>
+            <div class="payment-method" id="pay-card" onclick="selectPayment('card')">
+              <div class="payment-icon">💳</div>
+              <div class="payment-name">Credit / Debit Card</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden submit trigger -->
+        <button type="submit" style="display:none" id="hiddenSubmit"></button>
+      </form>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <aside class="checkout-summary">
+      <h3>Your Order</h3>
+      <div class="checkout-items" id="checkoutItems">
+        <!-- Populated by JS -->
+      </div>
+      <div style="height:1px;background:var(--border);margin:14px 0;"></div>
+      <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">Rs. 0</span></div>
+      <div class="summary-row"><span>Shipping</span><span id="summaryShipping">—</span></div>
+      <div class="summary-row"><span>Discount</span><span id="summaryDiscount" style="color:var(--success)">—</span></div>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>Rs. <span id="summaryTotal">0</span></span>
+      </div>
+      <button class="place-order-btn" id="placeOrderBtn" onclick="document.getElementById('hiddenSubmit').click()">
+        ✅ Place Order
+      </button>
+      <p style="font-size:11.5px;color:var(--text-subtle);text-align:center;margin-top:12px;">
+        🔒 Your payment is 100% secure & encrypted
+      </p>
+    </aside>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom" style="justify-content:center;">
+    <p>© 2026 Shopping Mania. All rights reserved.</p>
+  </div>
+</footer>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to your Shopping Mania account to access your orders and wishlist.">
+  <title>Login — Shopping Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-card">
+
+  <div class="auth-logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">Shopping Mania</span>
+  </div>
+
+  <h2>Welcome Back</h2>
+  <p class="auth-sub">Sign in to your account to continue shopping</p>
+
+  <!-- Social Login -->
+  <div class="social-logins">
+    <button class="social-login-btn" onclick="showToast('Coming Soon', 'Google login is coming soon!', 'info')">
+      🌐 Google
+    </button>
+    <button class="social-login-btn" onclick="showToast('Coming Soon', 'Facebook login is coming soon!', 'info')">
+      👥 Facebook
+    </button>
+  </div>
+
+  <div class="auth-divider"><span>or continue with email</span></div>
+
+  <form class="auth-form" onsubmit="loginUser(event)">
+
+    <div class="input-group">
+      <span class="input-icon">✉️</span>
+      <input type="email" id="loginEmail" placeholder="Email address" required autocomplete="email">
+    </div>
+
+    <div class="input-group">
+      <span class="input-icon">🔒</span>
+      <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+      <button type="button" class="eye-toggle" onclick="togglePassword('loginPassword', this)">👁️</button>
+    </div>
+
+    <div class="forgot-link">
+      <a href="#">Forgot password?</a>
+    </div>
+
+    <button type="submit" class="auth-submit">
+      Sign In →
+    </button>
+
+  </form>
+
+  <div class="auth-footer">
+    Don't have an account? <a href="register.html">Create one →</a>
+  </div>
+
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="scripts.js"></script>
+</body>
+</html>

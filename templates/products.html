@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse all premium products at Shopping Mania. Filter by category, price, and rating.">
+  <title>All Products — Shopping Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="announcement-bar">
+  🚀 Free Shipping on orders over Rs. 5,000 &nbsp;|&nbsp; Use code <strong>LUXE20</strong> for 20% off
+</div>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">Shopping Mania</span>
+  </a>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search products…">
+    <button class="search-btn" onclick="filterProducts()">Search</button>
+  </div>
+  <div class="header-actions">
+    <a href="login.html" class="icon-btn">👤</a>
+    <a href="cart.html" class="icon-btn">🛒 <span class="cart-badge" id="cartCount">0</span></a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="products.html" class="active">All Products</a>
+  <a href="products.html?cat=electronics">Electronics</a>
+  <a href="products.html?cat=fashion">Fashion</a>
+  <a href="products.html?cat=beauty">Beauty</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="page-header">
+  <h1>All Products</h1>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <span>Products</span>
+  </div>
+</div>
+
+<div class="products-page-layout">
+
+  <!-- Filters Sidebar -->
+  <aside class="filters-sidebar">
+    <h3>🔧 Filters</h3>
+
+    <!-- Search within page -->
+    <div class="filter-section">
+      <div style="position:relative;">
+        <input type="text" id="productsSearch"
+               placeholder="Search…"
+               style="width:100%;padding:9px 13px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:13.5px;outline:none;"
+               oninput="filterProducts()">
+      </div>
+    </div>
+
+    <div class="filter-separator"></div>
+
+    <!-- Category -->
+    <div class="filter-section">
+      <h4>Category</h4>
+      <div class="filter-option">
+        <input type="checkbox" class="cat-filter" id="cat-electronics" value="Electronics" onchange="filterProducts()">
+        <label for="cat-electronics">Electronics <span class="filter-count">3</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" class="cat-filter" id="cat-fashion" value="Fashion" onchange="filterProducts()">
+        <label for="cat-fashion">Fashion <span class="filter-count">1</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" class="cat-filter" id="cat-beauty" value="Beauty" onchange="filterProducts()">
+        <label for="cat-beauty">Beauty <span class="filter-count">3</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" class="cat-filter" id="cat-shoes" value="Shoes" onchange="filterProducts()">
+        <label for="cat-shoes">Shoes <span class="filter-count">2</span></label>
+      </div>
+    </div>
+
+    <div class="filter-separator"></div>
+
+    <!-- Price Range -->
+    <div class="filter-section">
+      <h4>Max Price</h4>
+      <div class="price-range">
+        <input type="range" id="priceRange" min="500" max="200000" value="200000"
+               step="500" oninput="filterProducts()">
+        <div class="price-labels">
+          <span>Rs. 500</span>
+          <span id="priceLabel">Rs. 2,00,000</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-separator"></div>
+
+    <!-- Reset -->
+    <button onclick="resetFilters()" style="width:100%;padding:9px;background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);font-size:13px;font-weight:600;cursor:pointer;transition:var(--transition);"
+            onmouseover="this.style.borderColor='var(--brand)';this.style.color='var(--brand-light)'"
+            onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+      Reset Filters
+    </button>
+  </aside>
+
+  <!-- Products Main -->
+  <div class="products-main-area">
+    <div class="products-toolbar">
+      <div class="products-count" id="productsCount">Showing <strong>9</strong> products</div>
+      <select class="sort-select" id="sortSelect" onchange="filterProducts()">
+        <option value="default">Sort: Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="rating">Top Rated</option>
+        <option value="discount">Best Discount</option>
+      </select>
+    </div>
+    <div class="products-grid" id="productsGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-bottom" style="justify-content:center;">
+    <p>© 2026 Shopping Mania. All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop">↑</button>
+<div id="toastContainer" class="toast-container"></div>
+<script src="scripts.js"></script>
+<script>
+  function resetFilters() {
+    document.querySelectorAll(".cat-filter").forEach(c => c.checked = false);
+    const pr = document.getElementById("priceRange");
+    if (pr) pr.value = 200000;
+    const ps = document.getElementById("productsSearch");
+    if (ps) ps.value = "";
+    const ss = document.getElementById("sortSelect");
+    if (ss) ss.value = "default";
+    filterProducts();
+  }
+</script>
+</body>
+</html>

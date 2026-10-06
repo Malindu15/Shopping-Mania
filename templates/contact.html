@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Shopping Mania. We're here to help with any questions or concerns.">
+  <title>Contact Us — Shopping Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="announcement-bar">
+  💬 We respond to all inquiries within 24 hours!
+</div>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">Shopping Mania</span>
+  </a>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search products…">
+    <button class="search-btn" onclick="window.location.href='products.html?q='+document.getElementById('searchInput').value">Search</button>
+  </div>
+  <div class="header-actions">
+    <a href="login.html" class="icon-btn">👤</a>
+    <a href="cart.html" class="icon-btn">🛒 <span class="cart-badge" id="cartCount">0</span></a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="products.html">All Products</a>
+  <a href="products.html?cat=electronics">Electronics</a>
+  <a href="products.html?cat=fashion">Fashion</a>
+  <a href="products.html?cat=beauty">Beauty</a>
+  <a href="contact.html" class="active">Contact</a>
+</nav>
+
+<div class="page-header">
+  <h1>Contact Us</h1>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <span>Contact</span>
+  </div>
+</div>
+
+<div class="contact-layout">
+
+  <!-- Contact Info Cards -->
+  <div class="contact-info">
+
+    <div class="contact-info-card">
+      <div class="contact-icon">📍</div>
+      <div>
+        <h4>Our Address</h4>
+        <p>Shopping Mania HQ, Blue Area,<br>Colombo, Sri Lanka</p>
+      </div>
+    </div>
+
+    <div class="contact-info-card">
+      <div class="contact-icon">📞</div>
+      <div>
+        <h4>Phone Support</h4>
+        <p>+92 300 123 4567<br>Mon–Sat, 9am – 6pm</p>
+      </div>
+    </div>
+
+    <div class="contact-info-card">
+      <div class="contact-icon">✉️</div>
+      <div>
+        <h4>Email Us</h4>
+        <p>support@shoppingmania.pk<br>We reply within 24 hours</p>
+      </div>
+    </div>
+
+    <div class="contact-info-card">
+      <div class="contact-icon">🚚</div>
+      <div>
+        <h4>Delivery Info</h4>
+        <p>Nationwide delivery<br>3–5 business days</p>
+      </div>
+    </div>
+
+    <!-- Quick FAQ -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-top:2px;">
+      <h4 style="font-size:14.5px;font-weight:700;margin-bottom:14px;">Quick Answers</h4>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;color:var(--text-muted);">
+        <details style="cursor:pointer;">
+          <summary style="color:var(--text);font-weight:500;">How do I track my order?</summary>
+          <p style="margin-top:6px;padding-left:12px;">You'll receive a tracking link via email once your order ships.</p>
+        </details>
+        <details style="cursor:pointer;">
+          <summary style="color:var(--text);font-weight:500;">What is your return policy?</summary>
+          <p style="margin-top:6px;padding-left:12px;">We offer 30-day hassle-free returns on all items.</p>
+        </details>
+        <details style="cursor:pointer;">
+          <summary style="color:var(--text);font-weight:500;">Do you offer COD?</summary>
+          <p style="margin-top:6px;padding-left:12px;">Yes! Cash on Delivery is available across Sri Lanka.</p>
+        </details>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Contact Form -->
+  <div class="contact-form-card">
+    <h3>Send Us a Message</h3>
+    <p class="sub">Fill out the form and we'll get back to you within 24 hours.</p>
+
+    <form class="contact-form" onsubmit="submitContact(event)">
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="float-group">
+          <input type="text" id="contactName" placeholder=" " required>
+          <label for="contactName">Your Name</label>
+        </div>
+        <div class="float-group">
+          <input type="email" id="contactEmail" placeholder=" " required>
+          <label for="contactEmail">Email Address</label>
+        </div>
+      </div>
+
+      <div class="float-group">
+        <input type="text" id="contactSubject" placeholder=" " required>
+        <label for="contactSubject">Subject</label>
+      </div>
+
+      <div class="float-group">
+        <select id="contactCategory" required>
+          <option value="" disabled selected></option>
+          <option value="order">Order Issue</option>
+          <option value="return">Returns & Refunds</option>
+          <option value="product">Product Inquiry</option>
+          <option value="payment">Payment Help</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="contactCategory">Category</label>
+      </div>
+
+      <div class="float-group">
+        <textarea id="contactMessage" placeholder=" " required></textarea>
+        <label for="contactMessage">Your Message</label>
+      </div>
+
+      <button type="submit" class="contact-submit">
+        📨 Send Message
+      </button>
+
+    </form>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="margin-bottom:14px;display:inline-flex;">
+        <div class="logo-icon">✦</div>
+        <span class="logo-text">Shopping Mania</span>
+      </a>
+      <p>Your premium shopping destination. Curated collections. Delivered with care.</p>
+      <div class="footer-social">
+        <button class="social-btn">📸</button>
+        <button class="social-btn">👥</button>
+        <button class="social-btn">🐦</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="products.html">All Products</a>
+      <a href="products.html?cat=electronics">Electronics</a>
+      <a href="products.html?cat=fashion">Fashion</a>
+      <a href="products.html?cat=beauty">Beauty</a>
+    </div>
+    <div class="footer-col">
+      <h4>Account</h4>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+      <a href="cart.html">My Cart</a>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="contact.html">Contact</a>
+      <a href="#">FAQ</a>
+      <a href="#">Returns</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Shopping Mania. All rights reserved.</p>
+    <div class="footer-payments">
+      <span class="payment-badge">VISA</span>
+      <span class="payment-badge">MC</span>
+      <span class="payment-badge">COD</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop">↑</button>
+<div id="toastContainer" class="toast-container"></div>
+
+<script src="scripts.js"></script>
+<script>
+  function submitContact(event) {
+    event.preventDefault();
+    const btn = event.target.querySelector("button[type=submit]");
+    btn.textContent = "⏳ Sending…";
+    btn.disabled = true;
+    setTimeout(() => {
+      showToast("Message Sent! 🎉", "We'll get back to you within 24 hours.", "success");
+      event.target.reset();
+      btn.textContent = "📨 Send Message";
+      btn.disabled = false;
+    }, 1400);
+  }
+</script>
+</body>
+</html>
+

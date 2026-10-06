@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create your Shopping Mania account and unlock exclusive deals and faster checkout.">
+  <title>Create Account — Shopping Mania</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-card">
+
+  <div class="auth-logo">
+    <div class="logo-icon">✦</div>
+    <span class="logo-text">Shopping Mania</span>
+  </div>
+
+  <h2>Create Account</h2>
+  <p class="auth-sub">Join 50,000+ smart shoppers today</p>
+
+  <div class="social-logins">
+    <button class="social-login-btn" onclick="showToast('Coming Soon', 'Google sign-up is coming soon!', 'info')">
+      🌐 Google
+    </button>
+    <button class="social-login-btn" onclick="showToast('Coming Soon', 'Facebook sign-up is coming soon!', 'info')">
+      👥 Facebook
+    </button>
+  </div>
+
+  <div class="auth-divider"><span>or register with email</span></div>
+
+  <form class="auth-form" onsubmit="registerUser(event)">
+
+    <div class="input-group">
+      <span class="input-icon">👤</span>
+      <input type="text" id="registerName" placeholder="Full name" required autocomplete="name">
+    </div>
+
+    <div class="input-group">
+      <span class="input-icon">✉️</span>
+      <input type="email" id="registerEmail" placeholder="Email address" required autocomplete="email">
+    </div>
+
+    <div class="input-group">
+      <span class="input-icon">🔒</span>
+      <input type="password" id="registerPassword" placeholder="Create a strong password" required autocomplete="new-password"
+             oninput="checkPasswordStrength(this.value)">
+      <button type="button" class="eye-toggle" onclick="togglePassword('registerPassword', this)">👁️</button>
+    </div>
+
+    <!-- Password Strength -->
+    <div class="password-strength" id="passwordStrength">
+      <div class="strength-bar">
+        <div class="strength-fill" id="strengthFill"></div>
+      </div>
+      <span class="strength-text" id="strengthText"></span>
+    </div>
+
+    <div class="terms-check">
+      <input type="checkbox" id="termsCheck">
+      <label for="termsCheck">
+        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+      </label>
+    </div>
+
+    <button type="submit" class="auth-submit">
+      Create Account →
+    </button>
+
+  </form>
+
+  <div class="auth-footer">
+    Already have an account? <a href="login.html">Sign in →</a>
+  </div>
+
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="scripts.js"></script>
+</body>
+</html>
